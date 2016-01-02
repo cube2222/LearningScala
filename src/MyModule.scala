@@ -19,15 +19,8 @@ object MyModule {
     msg.format(n, f(n))
   }
 
-  def curry[A,B,C](f: (A,B) => C): A => (B => C) = {
-    def tempFunction(a: A): (B => C) = {
-      def midTempFunction(b: B): C = {
-        f(a,b)
-      }
-      midTempFunction
-    }
-    tempFunction
-  }
+  def curry[A,B,C](f: (A,B) => C): A => (B => C) =
+    (a: A) => (b: B) => f(a,b)
 
   def Fib(n: Int): Int = {
     @annotation.tailrec
@@ -39,7 +32,20 @@ object MyModule {
     else if (n == 2) 1
     else go(0,1,n-2)
   }
-  def main(args: Array[String]): Unit = {
 
+  def compose[A,B,C](f: B => C,g: A => B): A => C =
+    (a: A) => f(g(a))
+
+  def isSorted[A](as: Array[A], ordered: (A,A) => Boolean): Boolean = {
+    @annotation.tailrec
+    def go(index: Int): Boolean = {
+      if (index >= as.length - 1) true
+      else if (!ordered(as(index),as(index+1))) false
+      else go(index + 1)
+    }
+    go(0)
+  }
+
+  def main(args: Array[String]): Unit = {
   }
 }
