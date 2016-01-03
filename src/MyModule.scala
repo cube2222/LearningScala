@@ -1,6 +1,8 @@
 /**
   * Created by jakub on 1/2/2016.
   */
+import LearningScala.datastructures
+
 object MyModule {
   def abs(n: Int): Int =
     if (n < 0) -n
@@ -47,5 +49,8 @@ object MyModule {
   }
 
   def main(args: Array[String]): Unit = {
+    val myList = datastructures.List(5,7,9)
+    println(myList)
+    println(datastructures.List.sum(myList))
   }
 }
