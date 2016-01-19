@@ -3,6 +3,7 @@
   */
 import LearningScala.datastructures
 import LearningScala.datastructures.{Leaf, Branch, Cons, Tree}
+import LearningScala.errorhandling
 
 object MyModule {
   def abs(n: Int): Int =
@@ -50,8 +51,11 @@ object MyModule {
   }
 
   def main(args: Array[String]): Unit = {
-    val myTree = Branch(Branch(Leaf(1),Leaf(3)),Leaf(5))
-    println(myTree)
-    println(Tree.map(myTree)(_ + 1))
+    val x = errorhandling.Some(5)
+    val y = errorhandling.None
+
+    def MakeOne(x: Int) = 1
+    println(x.map(MakeOne))
+    println(y.map(MakeOne))
   }
 }
