@@ -53,9 +53,13 @@ object MyModule {
   def main(args: Array[String]): Unit = {
     val x = errorhandling.Some(5)
     val y = errorhandling.None
+    val z = errorhandling.Some(6)
 
-    def MakeOne(x: Int) = 1
-    println(x.map(MakeOne))
-    println(y.map(MakeOne))
+    def isFive: (Int) => Boolean = {
+      x => x == 5
+    }
+    println(x.filter(isFive))
+    println(y.filter(isFive))
+    println(z.filter(isFive))
   }
 }
