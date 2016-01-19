@@ -2,6 +2,7 @@
   * Created by jakub on 1/2/2016.
   */
 import LearningScala.datastructures
+import LearningScala.datastructures.{Leaf, Branch, Cons, Tree}
 
 object MyModule {
   def abs(n: Int): Int =
@@ -49,8 +50,8 @@ object MyModule {
   }
 
   def main(args: Array[String]): Unit = {
-    val myList = datastructures.List(5,7,9)
-    println(myList)
-    println(datastructures.List.sum(myList))
+    val myTree = Branch(Branch(Leaf(1),Leaf(3)),Leaf(5))
+    println(myTree)
+    println(Tree.map(myTree)(_ + 1))
   }
 }
