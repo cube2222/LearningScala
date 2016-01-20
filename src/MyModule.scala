@@ -51,15 +51,9 @@ object MyModule {
   }
 
   def main(args: Array[String]): Unit = {
-    val x = errorhandling.Some(5)
-    val y = errorhandling.None
-    val z = errorhandling.Some(6)
-
-    def isFive: (Int) => Boolean = {
-      x => x == 5
-    }
-    println(x.filter(isFive))
-    println(y.filter(isFive))
-    println(z.filter(isFive))
+    val x = errorhandling.Option.variance(Seq(2.0,2.5,2.3,7.0,1.0))
+    val y = errorhandling.Option.variance(Seq())
+    println(x)
+    println(y)
   }
 }
