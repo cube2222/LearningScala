@@ -51,9 +51,9 @@ object MyModule {
   }
 
   def main(args: Array[String]): Unit = {
-    val x = errorhandling.Option.variance(Seq(2.0,2.5,2.3,7.0,1.0))
-    val y = errorhandling.Option.variance(Seq())
-    println(x)
-    println(y)
+    val x = errorhandling.Some(5)
+    val y = errorhandling.Some(3)
+    println(errorhandling.Option.map2(x,y.filter(_ == 2))(_ + _))
+    println(errorhandling.Option.map2(x,y.filter(_ == 3))(_ + _))
   }
 }
